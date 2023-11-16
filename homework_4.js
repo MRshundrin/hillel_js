@@ -10,36 +10,36 @@
 
 // Варіант 1
 {
-    let answer = prompt('Enter any number').trim()
+    let answer = prompt('Enter any number').trim();
 
     switch (0) {
         case answer % 3 + answer % 5:
-            console.log('FizzBuzz')
+            console.log('FizzBuzz');
             break;
         case answer % 3:
-            console.log('Fizz')
+            console.log('Fizz');
             break;
         case answer % 5:
-            console.log('Buzz')
+            console.log('Buzz');
             break;
         default:
-            console.log('Non Divisible')
+            console.log('Non Divisible');
             break;
     }
 }
 
 // Варіант 2
 {
-    let answer = prompt('Enter any number').trim()
+    let answer = prompt('Enter any number').trim();
 
     if (answer % 3 === 0 && answer % 5 === 0) {
-        console.log('FizzBuzz')
+        console.log('FizzBuzz');
     } else if (answer % 3 === 0) {
-        console.log('Fizz')
+        console.log('Fizz');
     } else if (answer % 5 === 0) {
-        console.log('Buzz')
+        console.log('Buzz');
     } else {
-        console.log('Non Divisible')
+        console.log('Non Divisible');
     }
 }
 
@@ -57,38 +57,38 @@
 
 // Варіант 1
 {
-    let answer = prompt('Enter something').trim()
+    let answer = prompt('Enter something').trim();
 
     if (!isNaN(+answer)) {
-        console.log('You entered a number.')
+        console.log('You entered a number.');
     } else if (answer.toUpperCase() === 'FALSE' || answer.toUpperCase() === 'TRUE') {
         // щоб не пропустити регістр літер, просто робимо все через .toUpperCase()
-        console.log('You entered a boolean.')
+        console.log('You entered a boolean.');
     } else if ((/(false|true)/i).test(answer) || (/\d+/).test(answer)) {
         // тут або так (але в такому випадку 'stringFalse' або 'false true' буде вважатись змішаним контентом),
         // або взагалі розбивати строку у масив и перевіряти кожне слово.
-        console.log('You entered a complex data')
+        console.log('You entered a complex data');
     } else {
-        console.log('You entered a string')
+        console.log('You entered a string');
     }
 }
 
 // Варіант 2
 {
-    let answer = prompt('Enter something').trim()
+    let answer = prompt('Enter something').trim();
 
     switch (true) {
         case !isNaN(+answer):
-            console.log('You entered a number.')
+            console.log('You entered a number.');
             break;
         case (answer.toUpperCase() === 'FALSE' || answer.toUpperCase() === 'TRUE'):
-            console.log('You entered a boolean.')
+            console.log('You entered a boolean.');
             break;
         case (/(false|true)/i).test(answer) || (/\d+/).test(answer):
-            console.log('You entered a complex data')
+            console.log('You entered a complex data');
             break;
         default:
-            console.log('You entered a string')
+            console.log('You entered a string');
             break;
     }
 }
