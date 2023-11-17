@@ -6,15 +6,20 @@
     Якщо користувач ввів не числове значення - вивести текстове повідомлення Only numbers, please та знову запитувати ввести значення.
 */
 
-{
-    let answer = +prompt('Enter some number');
+/*
+     1) Прибрав перетворення до числа перед кожним prompt(), так як дійсно краще один раз це зробити
+        при перевірці на NaN, ніж кожного разу.
+     2) Розбив один while на 2, щоб не ускладнювати умови циклу.
+*/
 
-    while(isNaN(answer) || answer < 123) {
-        if (!isNaN(answer)) {
-            answer = +prompt('Should continue');
-        } else {
-            answer = +prompt('Only numbers, please');
-        }
+{
+    let answer = prompt('Enter some number');
+
+    while (isNaN(+answer)) {
+        answer = prompt('Only numbers, please');
+    }
+    while(answer < 123) {
+        answer = prompt('Should continue');
     }
 
     alert("Wow, you've ended this endless cycle!");
@@ -32,25 +37,44 @@
  */
 
 {
-    let number1 = +prompt('Enter number 1');
-    let number2 = +prompt('Enter number 2');
+/*
+    0.0) Виніс змінні на початок, щоб одразу було видно що буде присутнє у коді.
+    0.1) Вирішив залишити перетворення до числа на етапі prompt(), так як в іншому випадку придеться це робити частіше.
+    1) Можливо не зовсім вірно зрозумів комент: "Чи можливо аби запит на числа від користувача був у циклі?". В голові
+        крутилося 2 варіани, або через for() {}, або просто додати первинний виклик prompt() у while(). Але виникла необхідність
+        додатково робити перевірку, щоб виводити різні повідомлення при prompt(). Коротше мені здається, що я все ускладнив.
+    2)  Тут теж не впевнений, що знайшов оптимальне рішення, хоча і з одною перевіркою на те, яке число менше.
+        Виглядає більш об'ємно, але більш читаємо.
+*/
+
+    let number1;
+    let number2;
+    let startNumber;
+    let finishNumber;
+    let sum = 0;
+    let mult = 1;
 
     while(isNaN(number1) || isNaN(number2)) {
-        if (isNaN(number1)) {
+        if (typeof number1 === 'undefined') {
+            number1 = +prompt('Enter number 1');
+        } else if (isNaN(number1)) {
             number1 = +prompt('Only numbers, please (number 1)');
         }
 
-        if (isNaN(number2)) {
+        if (typeof number2 === 'undefined') {
+            number2 = +prompt('Enter number 2');
+        } else if (isNaN(number2)) {
             number2 = +prompt('Only numbers, please (number 2)');
         }
     }
 
-    let startNumber = number1 < number2 ? number1 : number2;
-    let finishNumber = number1 > number2 ? number1 + 1 : number2 + 1;
-
-    let sum = 0;
-    let mult = 1;
-
+    if (number1 < number2) {
+        startNumber = number1;
+        finishNumber = number2 + 1;
+    } else {
+        startNumber = number2;
+        finishNumber = number1 + 1;
+    }
 
     for (let x = startNumber; x < finishNumber; x++) {
        if (x % 2 === 0) {
